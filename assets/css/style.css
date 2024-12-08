@@ -1,0 +1,35 @@
+.cards {
+    transition: transform 0.3s ease-in-out;
+}
+
+.cards:hover {
+    transform: scale(1.05);
+    /* Animasi saat hover */
+}
+
+.img-container {
+    overflow: hidden;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+.img-container img {
+    transition: transform 0.3s ease-in-out;
+}
+
+.img-container:hover img {
+    transform: scale(1.1);
+    /* Zoom gambar saat hover */
+}
+
+.badge-success {
+    background-color: #28a745;
+}
+
+.badge-warning {
+    background-color: #ffc107;
+}
+
+.badge-danger {
+    background-color: #dc3545;
+}
