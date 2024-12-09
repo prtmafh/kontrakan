@@ -27,7 +27,7 @@ Proyek ini adalah sebuah aplikasi berbasis web untuk penyewaan kontrakan yang di
 
 2. Pindah ke direktori proyek:
    ```bash
-   cd website-penyewaan-kontrakan
+   cd kontrakan
    ```
 
 3. Konfigurasikan database:
