@@ -55,7 +55,7 @@
 
                 <!-- Status Sewa -->
                 <li class="list-group-item d-flex justify-content-between align-items-center">
-                    <span><i class="fas fa-clock me-2"></i> Status</span>
+                    <span><i class="fas fa-clock me-2"></i> Status </span>
                     <span>
                         <?php if ($sewa->status == 'completed'): ?>
                             <span class="badge bg-danger"><?= ucfirst($sewa->status); ?></span>
