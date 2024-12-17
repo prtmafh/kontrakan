@@ -29,7 +29,9 @@
             <?= $this->session->flashdata('upload_error'); ?>
         </div>
     <?php endif; ?>
-    <?= $this->session->flashdata('pesan') ?>
+    <div id="flash-message">
+        <?= $this->session->flashdata('pesan'); ?>
+    </div>
 
     <!-- Main content -->
     <section class="content">

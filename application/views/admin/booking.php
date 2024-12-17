@@ -9,17 +9,18 @@
         </div>
     </div>
     <section class="content">
+
+
+
         <div class="container">
+            <div id="flash-message">
+                <?= $this->session->flashdata('pesan'); ?>
+            </div>
             <div class="card">
                 <div class="card-header bg-warning text-white">
                     <h4 class="mb-0"> <i class="fas fa-list"></i> Daftar Booking yang Menunggu Persetujuan</h4>
                 </div>
                 <div class="card-body">
-                    <?php if ($this->session->flashdata('pesan')): ?>
-                        <div class="alert alert-success">
-                            <?= $this->session->flashdata('pesan'); ?>
-                        </div>
-                    <?php endif; ?>
                     <?php if (!empty($pending_bookings)): ?>
                         <div class="table-responsive">
                             <table class="table table-bordered table-hover">

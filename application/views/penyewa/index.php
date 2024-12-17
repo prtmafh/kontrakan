@@ -2,12 +2,14 @@
     <div style="padding: 5px;">
         <div class="x_panel">
             <div class="x_content">
-                <?= $this->session->flashdata('pesan'); ?>
-                <marquee class="bg-black rounded" scrollamount="30">
+                <div id="flash-message">
+                    <?= $this->session->flashdata('pesan'); ?>
+                </div>
+                <!-- <marquee class="bg-black rounded" scrollamount="30">
                     <h1 class="text-danger fw-bold text-uppercase">
                         yang kerja bukan lu doang bangsat!! gw juga kerja ya anjing!!!
                     </h1>
-                </marquee>
+                </marquee> -->
                 <!-- Peraturan Kontrakan dengan tampilan formal -->
                 <div class="card mb-5 bg-light shadow-sm">
                     <div class="card-header bg-warning text-dark d-flex align-items-center">

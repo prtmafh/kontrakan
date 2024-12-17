@@ -10,6 +10,9 @@
     </div>
     <section class="content">
         <div class="container">
+            <div id="flash-message">
+                <?= $this->session->flashdata('pesan'); ?>
+            </div>
             <div class="card">
                 <div class="card-header bg-warning text-white">
                     <h4 class="mb-0"> <i class="fas fa-list"></i> Daftar Perpanjangan Kamar yang Menunggu Persetujuan</h4>

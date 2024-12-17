@@ -14,17 +14,19 @@
             </div>
         </div>
     </div>
-    <?= $this->session->flashdata('pesan') ?>
+    <div id="flash-message">
+        <?= $this->session->flashdata('pesan'); ?>
+    </div>
     <section class="content">
         <div class="container">
             <div class="row justify-content-center">
                 <div class="col-md-10">
                     <div class="card shadow-lg border-0 rounded-3">
                         <?php foreach ($kamar as $k) : ?>
-                            <img src="<?= base_url('assets/img/upload/') . $k['image']; ?>" class="card-img-top rounded-top" alt="<?= $k['nama_kamar']; ?>" style="object-fit: cover; height: 400px;">
-                            <div class="card-body p-5">
+                            <div class="card-body ">
+                                <img src="<?= base_url('assets/img/upload/') . $k['image']; ?>" class="card-img-top rounded-top mb-3" alt="<?= $k['nama_kamar']; ?>" style="object-fit: cover; height: 400px;">
 
-                                <h3 class="text-bold text-capitalize mb-4"><?= $k['nama_kamar']; ?></h3>
+                                <h3 class="text-bold text-capitalize mb-1"><?= $k['nama_kamar']; ?></h3>
 
                                 <table class="table table-borderless">
                                     <tbody>
@@ -53,9 +55,9 @@
                                     </tbody>
                                 </table>
 
-                                <div class="d-grid gap-2 mt-5">
-                                    <button class="btn btn-warning shadow-sm" onclick="window.history.go(-1)">Kembali</button>
-                                    <a href="<?= base_url('admin/editkamar/') . $k['id_kamar'] ?>" class="btn btn-danger shadow-sm mt-auto">Edit Kamar</a>
+                                <div class="d-flex justify-content-between mt-4">
+                                    <a href="<?= base_url('admin/editkamar/') . $k['id_kamar'] ?>" class="btn btn-warning shadow-sm mt-auto">Edit Kamar</a>
+                                    <button class="btn btn-danger shadow-sm" onclick="window.history.go(-1)">Kembali</button>
                                 </div>
                             </div>
                         <?php endforeach; ?>

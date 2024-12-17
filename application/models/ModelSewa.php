@@ -33,13 +33,15 @@ class ModelSewa extends CI_Model
     {
         $this->db->insert('pembayaran', $data_pembayaran);
     }
-    public function updateExpiredSewa()
+
+    public function updateOngoingSewa()
     {
-        // Update semua penyewaan yang sudah selesai (sewa_end < tanggal sekarang) menjadi 'completed'
-        $this->db->set('status', 'completed');
-        $this->db->where('sewa_end <', date('Y-m-d'));
-        $this->db->where('status !=', 'completed');
+        // Update semua penyewaan yang belum dimulai (sewa_start > tanggal sekarang) dan statusnya bukan pending
+        $this->db->set('status', 'ongoing');
+        $this->db->where('sewa_start <=', date('Y-m-d'));
+        $this->db->where('status !=', 'ongoing');
         $this->db->update('sewa_kamar');
+        return $this->db->affected_rows();
     }
     public function updatePendingSewa()
     {
@@ -48,18 +50,33 @@ class ModelSewa extends CI_Model
         $this->db->where('sewa_start >', date('Y-m-d'));
         $this->db->where('status !=', 'pending');
         $this->db->update('sewa_kamar');
+        return $this->db->affected_rows();
     }
+    public function updateExpiredSewa()
+    {
+        // Update semua penyewaan yang sudah selesai (sewa_end < tanggal sekarang) menjadi 'completed'
+        $this->db->set('status', 'completed');
+        $this->db->where('sewa_end <', date('Y-m-d'));
+        $this->db->where('status !=', 'completed');
+        $this->db->update('sewa_kamar');
+        return $this->db->affected_rows();
+    }
+
     public function updateSewaStatuses()
     {
         // Panggil kedua fungsi untuk memperbarui status yang habis dan belum dimulai
-        $this->updateExpiredSewa();
-        $this->updatePendingSewa();
+        $ongoingUpdated = $this->updateOngoingSewa();
+        $expiredUpdated = $this->updateExpiredSewa();
+        $pendingUpdated = $this->updatePendingSewa();
+        return array($ongoingUpdated, $pendingUpdated, $expiredUpdated);
     }
+
     public function updateStatusSewaOtomatis()
     {
         // This method can be used to update the statuses automatically.
-        $this->updateSewaStatuses(); // Call the method that updates expired and pending statuses.
+        $updateResult = $this->updateSewaStatuses(); // Call the method that updates expired and pending statuses.
         // You can add more logic here if needed.
+        return $updateResult;
     }
 
 
@@ -72,8 +89,9 @@ class ModelSewa extends CI_Model
         $this->db->join('pembayaran', 'booking.id_booking = pembayaran.id_booking', 'left'); // LEFT JOIN agar booking tanpa pembayaran juga ditampilkan
         $this->db->join('sewa_kamar', 'sewa_kamar.id_booking = booking.id_booking', 'left'); // LEFT JOIN to get id_sewa
         $this->db->where('booking.id_user', $id_user);
-        $this->db->limit(1);
-        $this->db->order_by('sewa_kamar.sewa_start', 'DESC');
+        $this->db->where_in('sewa_kamar.status', ['ongoing', 'pending']);
+        // $this->db->limit(1);
+        $this->db->order_by('sewa_kamar.sewa_start', 'ASC');
         return $this->db->get()->result();
     }
     public function getKamarByUserIdHistory($id_user)

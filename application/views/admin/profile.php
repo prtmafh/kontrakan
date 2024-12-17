@@ -15,7 +15,9 @@
             </div>
         </div><!-- /.container-fluid -->
     </section>
-
+    <div id="flash-message">
+        <?= $this->session->flashdata('pesan'); ?>
+    </div>
     <!-- Main content -->
     <section class="content">
         <div class="container-fluid">

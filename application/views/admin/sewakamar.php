@@ -16,11 +16,9 @@
                 </div>
                 <div class="card-body">
                     <!-- Menampilkan pesan jika ada -->
-                    <!-- <?php if ($this->session->flashdata('message')): ?>
-                        <div class="alert alert-success">
-                            <?= $this->session->flashdata('message'); ?>
-                        </div>
-                    <?php endif; ?> -->
+                    <div id="flash-message">
+                        <?= $this->session->flashdata('pesan'); ?>
+                    </div>
 
                     <!-- Tombol untuk memperbarui status -->
                     <!-- <form action="<?= site_url('sewa/updateStatus') ?>" method="post" class="mb-3">

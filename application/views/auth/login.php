@@ -3,8 +3,10 @@
         <a href="" class="h1"><b>Login</b></a>
     </div>
     <div class="card-body">
-        <p class="login-box-msg">Sign in to start your session</p>
-        <?= $this->session->flashdata('pesan'); ?>
+        <!-- <p class="login-box-msg">Sign in to start your session</p> -->
+        <div id="flash-message">
+            <?= $this->session->flashdata('pesan'); ?>
+        </div>
         <form action="<?= base_url('auth'); ?>" method="post">
             <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
             <div class="input-group mb-3">
@@ -34,7 +36,7 @@
 
 
         <p class="mb-0">
-            <a href="<?= base_url('auth/register') ?>" class="text-center">Register a new membership</a>
+            <a href="<?= base_url('auth/register') ?>" class="text-center">Daftar disini</a>
         </p>
     </div>
     <!-- /.card-body -->

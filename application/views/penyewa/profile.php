@@ -1,6 +1,7 @@
 <div class="container mt-5">
-    <?= $this->session->flashdata('pesan'); ?>
-
+    <div id="flash-message">
+        <?= $this->session->flashdata('pesan'); ?>
+    </div>
     <div class="d-flex justify-content-center">
         <div class="card mb-3 shadow-lg" style="max-width: 700px; border-radius: 15px;">
             <div class="row g-0">

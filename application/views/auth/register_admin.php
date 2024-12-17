@@ -3,10 +3,10 @@
         <a href="#" class="h1"><b>Daftar Admin</b></a>
     </div>
     <div class="card-body">
-        <p class="login-box-msg">Register a new membership</p>
+        <p class="login-box-msg">Daftar Admin</p>
 
         <?php if ($this->session->flashdata('pesan')) : ?>
-            <div class="alert alert-success">
+            <div id="flash-message">
                 <?= $this->session->flashdata('pesan'); ?>
             </div>
         <?php endif; ?>

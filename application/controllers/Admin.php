@@ -235,6 +235,7 @@ class Admin extends CI_Controller
                 'judul' => 'Edit Kamar',
                 'kamar' => $kamar
             ];
+            $data['user'] = $this->ModelUser->cekData(['email' => $this->session->userdata('email')])->row_array();
 
             $this->load->view('templates/admin/header', $data);
             $this->load->view('templates/admin/topbar');
@@ -416,7 +417,7 @@ class Admin extends CI_Controller
             if ($this->ModelSewa->tambah_sewa($data_sewa)) {
                 // Update status booking
                 $this->ModelBooking->update_status_booking($id_booking, 'approved');
-                $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Booking telah disetujui.</div>');
+                $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-message" role="alert">Perpanjangan sewa telah disetujui.</div>');
             } else {
                 // Jika ada kesalahan saat insert
                 log_message('error', 'Gagal menambahkan data ke tabel sewa_kamar');

@@ -38,7 +38,8 @@
         </li>
         <li class="nav-item">
             <a href="<?= base_url('auth/logout') ?>" class="nav-link">
-                <i class="fas fa-sign-out-alt"></i>
+                <i class="fas fa-fw fa-sign-out-alt"></i>
+                Logout
             </a>
         </li>
     </ul>

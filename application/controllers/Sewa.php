@@ -66,7 +66,7 @@ class Sewa extends CI_Controller
     public function updateStatusSewaOtomatis()
     {
         // Panggil model untuk memperbarui status penyewaan
-        $this->load->model('ModelSewa');
+        // $this->load->model('ModelSewa');
         $this->ModelSewa->updateSewaStatuses();
     }
     public function updateStatus()
@@ -75,7 +75,7 @@ class Sewa extends CI_Controller
         $this->ModelSewa->updateSewaStatuses(); // Pastikan metode ini ada di model Anda
 
         // Set flashdata untuk pesan sukses
-        $this->session->set_flashdata('message', 'Status sewa berhasil diperbarui.');
+        $this->session->set_flashdata('pesan', 'Status sewa berhasil diperbarui.');
 
         // Redirect ke halaman yang sama setelah pembaruan
         redirect('sewa/sewakamar'); // Ganti dengan nama metode yang sesuai jika berbeda
